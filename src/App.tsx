@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { type Session } from "@supabase/supabase-js";
-import { ChakraProvider } from "@chakra-ui/react";
 import { supabase } from "./supabaseClient";
 import Auth from "./Auth";
 import Account from "./Account";
@@ -19,13 +18,13 @@ function App() {
   }, []);
 
   return (
-    <ChakraProvider>
+    <>
       {!session ? (
         <Auth />
       ) : (
         <Account key={session.user.id} session={session} />
       )}
-    </ChakraProvider>
+    </>
   );
 }
 
