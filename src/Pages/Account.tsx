@@ -14,14 +14,27 @@ export default function Account({ session }: Props) {
   });
   const { signout } = useAuth();
 
+  const inputSx = {
+    width: "100%",
+    marginBottom: "4",
+    borderColor: "midnightBlue.100",
+  };
+
   return (
     <Page title="Welcome!">
       <form onSubmit={updateProfile}>
         <VStack>
           <FormLabel htmlFor="email">Email</FormLabel>
-          <Input id="email" type="text" value={session.user.email} disabled />
+          <Input
+            sx={inputSx}
+            id="email"
+            type="text"
+            value={session.user.email}
+            disabled
+          />
           <FormLabel htmlFor="username">Name</FormLabel>
           <Input
+            sx={inputSx}
             id="full_name"
             type="text"
             required
