@@ -1,6 +1,7 @@
 import { type FormEvent } from "react";
 import Page from "./Page";
-import { Button, Input } from "@chakra-ui/react";
+import { Button } from "@chakra-ui/react";
+import LabelledInput from "../Components/LabelledInput";
 import useAuth from "../Hooks/useAuth";
 
 export default function Auth() {
@@ -11,36 +12,27 @@ export default function Auth() {
     login();
   };
 
-  const inputSx = {
-    width: "100%",
-    marginBottom: "4",
-    borderColor: "midnightBlue.100",
-  };
-
   return (
     <Page title="Welcome! Please log in">
       <form onSubmit={handleLogin}>
-        <Input
-          sx={inputSx}
+        <LabelledInput
+          label="Email"
           type="email"
           placeholder="Your email"
           value={email}
-          required={true}
+          isRequired
           onChange={(e) =>
             setCredentials((prev) => ({ ...prev, email: e.target.value }))
           }
         />
-        <Input
-          sx={inputSx}
+        <LabelledInput
+          label="Password"
           type="password"
           placeholder="Your password"
           value={password}
-          required={true}
+          isRequired
           onChange={(e) =>
-            setCredentials((prev) => ({
-              ...prev,
-              password: e.target.value,
-            }))
+            setCredentials((prev) => ({ ...prev, password: e.target.value }))
           }
         />
         <Button type="submit" disabled={loading}>
